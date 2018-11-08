@@ -2,11 +2,11 @@
 /*
     Plugin Name: Meta Theme Color Picker
     Plugin Script: meta-theme.php
-    Plugin URI: 
+    Plugin URI:
     Description: Change the meta theme color of your Wordpress site.
     Author: Stray Cat Communication
     Donate Link: https://straycat.nu/
-    License: GPL    
+    License: GPL
     Version: 1.0
     Author URI: https://straycat.nu/
     Text Domain: myfogp
@@ -29,13 +29,12 @@ along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
 // Adds color to meta-color
 add_action('wp_head', 'wpse_43672_wp_head');
 
 function wpse_43672_wp_head(){
-    //Close PHP tags 
-    ?>    
+    //Close PHP tags
+    ?>
     <meta name="theme-color" content=<?php echo get_option( 'mt_theme_color' ) ?>>
     <?php //Open PHP tags
 }
@@ -54,19 +53,19 @@ add_action('admin_menu', 'mt_add_pages');
 // action function for above hook
 function mt_add_pages() {
     // Add a new submenu under Settings:
-    add_options_page(__('Meta theme color','menu-test'), __('Meta theme color','menu-test'), 'manage_options', 'metathemecolor', 'mt_settings_page');
+    add_options_page(__('Meta Theme Color','menu-test'), __('Meta Theme Color','menu-test'), 'manage_options', 'metathemecolor', 'mt_settings_page');
 }
 
 // mt_settings_page() displays the page content for the Test Settings submenu
 function mt_settings_page() {
 
-    //must check that the user has the required capability 
+    //must check that the user has the required capability
     if (!current_user_can('manage_options'))
     {
       wp_die( __('You do not have sufficient permissions to access this page.') );
     }
 
-    // variables for the field and option names 
+    // variables for the field and option names
     $opt_name = 'mt_theme_color';
     $hidden_field_name = 'mt_submit_hidden';
     $data_field_name = 'mt_theme_color';
@@ -100,7 +99,7 @@ function mt_settings_page() {
     echo "<h2>" . __( 'Meta theme color settings', 'menu-test' ) . "</h2>";
 
     // settings form
-    
+
     ?>
 
 <form name="form1" method="post" action="">
@@ -115,6 +114,7 @@ function mt_settings_page() {
 </p>
 
 </form>
+<p><i>By Stray Cat</i></p>
 </div>
 
 <?php
